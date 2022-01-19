@@ -7,6 +7,7 @@ const InputTodo = () => {
     e.preventDefault();
     try {
       const body = { description };
+      // eslint-disable-next-line no-unused-vars
       const response = await fetch('http://localhost:5001/todos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
