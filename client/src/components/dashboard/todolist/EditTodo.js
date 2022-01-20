@@ -12,7 +12,7 @@ const EditTodo = ({ todo, setTodosChange }) => {
       myHeaders.append('Content-Type', 'application/json');
       myHeaders.append('jwt_token', localStorage.token);
 
-      await fetch(`http://localhost:5001/dashboard/todos/${id}`, {
+      await fetch(`/dashboard/todos/${id}`, {
         method: 'PUT',
         headers: myHeaders,
         body: JSON.stringify(body),

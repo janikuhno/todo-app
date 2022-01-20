@@ -19,7 +19,7 @@ const Register = ({ setAuth }) => {
     e.preventDefault(); // prevents refresh
     try {
       const body = { email, password, name };
-      const response = await fetch('http://localhost:5001/authentication/register', {
+      const response = await fetch('/authentication/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

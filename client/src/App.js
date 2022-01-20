@@ -25,13 +25,10 @@ function App() {
 
   const isAuth = async () => {
     try {
-      const response = await fetch(
-        'http://localhost:5001/authentication/verify',
-        {
-          method: 'POST',
-          headers: { jwt_token: localStorage.token },
-        }
-      );
+      const response = await fetch('/authentication/verify', {
+        method: 'POST',
+        headers: { jwt_token: localStorage.token },
+      });
 
       const parseRes = await response.json();
 
