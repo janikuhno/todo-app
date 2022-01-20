@@ -5,12 +5,12 @@ const pool = require('../db');
 // get all todos
 router.get('/', authorize, async (req, res) => {
   try {
-    const users = await pool.query(
+    const user = await pool.query(
       'SELECT users.user_name, todos.todo_id, todos.description FROM users LEFT JOIN todos ON users.user_id = todos.user_id WHERE users.user_id = $1',
       [req.user.id]
     );
 
-    res.json(users.rows);
+    res.json(user.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
