@@ -1,19 +1,24 @@
 import React, { Fragment, useState } from 'react';
 
-const EditTodo = ({ todo }) => {
+const EditTodo = ({ todo, setTodosChange }) => {
   const [description, setDescription] = useState(todo.description);
 
   // edit description
-  const updateDescription = async (e) => {
-    e.preventDefault();
+  const updateDescription = async (id) => {
     try {
       const body = { description };
-      const response = await fetch(`http://localhost:5001/todos/${todo.id}`, {
+
+      const myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('jwt_token', localStorage.token);
+
+      await fetch(`http://localhost:5001/dashboard/todos/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: myHeaders,
         body: JSON.stringify(body),
       });
-      window.location = '/';
+
+      setTodosChange(true);
     } catch (err) {
       console.error(err.message);
     }
@@ -25,13 +30,13 @@ const EditTodo = ({ todo }) => {
         type="button"
         className="btn btn-warning"
         data-bs-toggle="modal"
-        data-bs-target={`#id${todo.id}`}
+        data-bs-target={`#id${todo.todo_id}`}
       >
         Edit
       </button>
       <div
         className="modal"
-        id={`id${todo.id}`}
+        id={`id${todo.todo_id}`}
         onClick={() => setDescription(todo.description)}
       >
         <div className="modal-dialog">
@@ -58,11 +63,11 @@ const EditTodo = ({ todo }) => {
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-warning"
+                className="btn btn-primary"
                 data-bs-dismiss="modal"
-                onClick={(e) => updateDescription(e)}
+                onClick={() => updateDescription(todo.todo_id)}
               >
-                Edit
+                Save
               </button>
               <button
                 type="button"

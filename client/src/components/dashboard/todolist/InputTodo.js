@@ -1,20 +1,27 @@
 import React, { Fragment, useState } from 'react';
 
-const InputTodo = () => {
+const InputTodo = ({ setTodosChange }) => {
   const [description, setDescription] = useState('');
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
+      const myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('jwt_token', localStorage.token);
+
       const body = { description };
-      // eslint-disable-next-line no-unused-vars
-      const response = await fetch('http://localhost:5001/todos', {
+      const response = await fetch('http://localhost:5001/dashboard/todos', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: myHeaders,
         body: JSON.stringify(body),
       });
 
-      window.location = '/';
+      // eslint-disable-next-line no-unused-vars
+      const parseRes = await response.json();
+
+      setTodosChange(true);
+      setDescription('');
     } catch (err) {
       console.error(err.message);
     }
@@ -22,10 +29,11 @@ const InputTodo = () => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Todo list</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
+      <h1 className="text-center my-5">Add Todo</h1>
+      <form className="d-flex" onSubmit={onSubmitForm}>
         <input
           type="text"
+          placeholder="add todo"
           className="form-control"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
