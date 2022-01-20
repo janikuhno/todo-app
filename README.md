@@ -1,2 +1,2 @@
 ### Todo App
-A simple todo app created with the PERN stack.
+A simple fullstack todo app created with the PERN stack.
