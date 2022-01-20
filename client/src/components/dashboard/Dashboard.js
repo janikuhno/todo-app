@@ -8,6 +8,7 @@ import ListTodos from './todolist/ListTodos';
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState('');
   const [allTodos, setAllTodos] = useState([]);
+  // whenever something changes runs useEffect which in turn will run getName and therefore refresh
   const [todosChange, setTodosChange] = useState(false);
 
   const getName = async () => {

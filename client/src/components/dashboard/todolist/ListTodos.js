@@ -16,7 +16,7 @@ const ListTodos = ({ allTodos, setTodosChange }) => {
         }
       );
 
-      setTodos(todos.filter((todo) => todo.id !== id));
+      setTodos(todos.filter((todo) => todo.todo_id !== id));
     } catch (err) {
       console.error(err.message);
     }
@@ -43,7 +43,7 @@ const ListTodos = ({ allTodos, setTodosChange }) => {
               <tr key={todo.todo_id}>
                 <td>{todo.description}</td>
                 <td>
-                  <EditTodo todo={todo} setTodos={setTodosChange} />
+                  <EditTodo todo={todo} setTodosChange={setTodosChange} />
                 </td>
                 <td>
                   <button
