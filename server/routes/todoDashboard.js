@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const authorize = require('../middleware/authorize');
-const pool = require('./db');
+const pool = require('../db');
 
 // get all todos
 router.get('/', authorize, async (req, res) => {
@@ -67,3 +67,5 @@ router.delete('/todos/:id', authorize, async (req, res) => {
     console.error(err.message);
   }
 });
+
+module.exports = router;
