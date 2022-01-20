@@ -9,6 +9,9 @@ const PORT = 5001;
 app.use(cors());
 app.use(express.json());
 
+app.use('/authentication', require('./routes/jwtAuth'));
+app.use('/dashboard', require('./routes/todoDashboard'));
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
