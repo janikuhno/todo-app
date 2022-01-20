@@ -17,8 +17,7 @@ const InputTodo = ({ setTodosChange }) => {
         body: JSON.stringify(body),
       });
 
-      // eslint-disable-next-line no-unused-vars
-      const parseRes = await response.json();
+      await response.json();
 
       setTodosChange(true);
       setDescription('');

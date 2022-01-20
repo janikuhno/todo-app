@@ -7,14 +7,10 @@ const ListTodos = ({ allTodos, setTodosChange }) => {
   // delete a todo
   const deleteTodo = async (id) => {
     try {
-      // eslint-disable-next-line no-unused-vars
-      const deleteTodo = await fetch(
-        `http://localhost:5001/dashboard/todos/${id}`,
-        {
-          method: 'DELETE',
-          headers: { jwt_token: localStorage.token },
-        }
-      );
+      await fetch(`http://localhost:5001/dashboard/todos/${id}`, {
+        method: 'DELETE',
+        headers: { jwt_token: localStorage.token },
+      });
 
       setTodos(todos.filter((todo) => todo.todo_id !== id));
     } catch (err) {
