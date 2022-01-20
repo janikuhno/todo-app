@@ -5,7 +5,7 @@ const Landing = () => {
   return (
     <div className="jumbotron mt-5">
       <h1>Todo App</h1>
-      <p>Sign In and start building your todo list</p>
+      <p>Log in or register to access your personal todo list!</p>
       <Link to="/login" className="btn btn-primary">
         Login
       </Link>
