@@ -1,7 +1,7 @@
+--database
 CREATE DATABASE todo_app_db;
 
 --users
-
 CREATE TABLE users(
   user_id UUID DEFAULT uuid_generate_v4(),
   user_name VARCHAR(255) NOT NULL,
@@ -11,7 +11,6 @@ CREATE TABLE users(
 );
 
 --todos
-
 CREATE TABLE todos(
   todo_id SERIAL,
   user_id UUID,
@@ -20,10 +19,8 @@ CREATE TABLE todos(
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
---fake users data
+--test users data
+insert into users (user_name, user_email, user_password) values ('Jani', 'jani@gmail.com', 'jmk071989');
 
-insert into users (user_name, user_email, user_password) values ('Jacob', 'jacob@gmail.com', 'kthl8822');
-
---fake todos data
-
-insert into todos (user_id, description) values ('85ce827f-7055-47ba-8df1-8c8726db2ef7', 'clean room');
+--test todos data
+insert into todos (user_id, description) values ('e2a319ba-9977-4bfc-bbc9-f835a1971342', 'finish todo app');
