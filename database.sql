@@ -1,5 +1,5 @@
 --database
-CREATE DATABASE todo_app_db;
+--CREATE DATABASE todo_app_db;
 
 --users
 CREATE TABLE users(
@@ -20,7 +20,7 @@ CREATE TABLE todos(
 );
 
 --test users data
-insert into users (user_name, user_email, user_password) values ('Jani', 'jani@gmail.com', 'jmk071989');
+--insert into users (user_name, user_email, user_password) values ('Jani', 'jani@gmail.com', 'jmk071989');
 
 --test todos data
-insert into todos (user_id, description) values ('e2a319ba-9977-4bfc-bbc9-f835a1971342', 'finish todo app');
+--insert into todos (user_id, description) values ('e2a319ba-9977-4bfc-bbc9-f835a1971342', 'finish todo app');
