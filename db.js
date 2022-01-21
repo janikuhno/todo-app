@@ -9,7 +9,7 @@ const proConfig = process.env.DATABASE_URL;
 console.log(process.env.DATABASE_URL);
 const pool = new Pool({
   connectionString:
-    process.env.NODE_ENV === 'production' ? proConfig : devConfig,
+    process.env.NODE_ENV === 'production' ? `${proConfig}?ssl=true` : devConfig,
 });
 
 module.exports = pool;
