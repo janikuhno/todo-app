@@ -18,6 +18,7 @@ const Register = ({ setAuth }) => {
   const onSubmitForm = async (e) => {
     e.preventDefault(); // prevents refresh
     try {
+      console.log('Do we get here?');
       const body = { email, password, name };
       const response = await fetch('/authentication/register', {
         method: 'POST',
