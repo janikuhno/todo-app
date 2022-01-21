@@ -9,6 +9,7 @@ const authorize = require('../middleware/authorize');
 // register
 router.post('/register', validInfo, async (req, res) => {
   try {
+    console.log('Do we get here?');
     // destructure the req.body (name, email, password)
     const { name, email, password } = req.body;
     // check if users exists, if user exists then throw error
