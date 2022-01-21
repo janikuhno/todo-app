@@ -1,6 +1,9 @@
 --database
 --CREATE DATABASE todo_app_db;
 
+--uuid
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 --users
 CREATE TABLE users(
   user_id UUID DEFAULT uuid_generate_v4(),
