@@ -25,7 +25,7 @@ const Login = ({ setAuth }) => {
       });
 
       const parseRes = await response.json();
-
+      
       if (parseRes.jwtToken) {
         localStorage.setItem('token', parseRes.jwtToken);
 
